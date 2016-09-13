@@ -1,7 +1,7 @@
 # ASSOI Compose
 
 ## Prerequisites
-- git
+- [git](https://git-scm.com)
 - [Vagrant](https://www.vagrantup.com/downloads.html)
 - [VirtualBox](https://www.virtualbox.org)
 
