@@ -3,6 +3,7 @@
 ## Prerequisites
 - git
 - [Vagrant](https://www.vagrantup.com/downloads.html)
+- [VirtualBox](https://www.virtualbox.org)
 
 ## Installation
 1. ```cd /path/to/working/directory```
