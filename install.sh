@@ -82,3 +82,4 @@ cd /htdocs/ugmk
 sudo npm i --no-bin-links
 node install.js
 sudo pm2 start ugmk.json
+sudo pm2 save

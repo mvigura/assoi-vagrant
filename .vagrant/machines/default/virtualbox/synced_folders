@@ -1,1 +1,1 @@
-{"virtualbox":{"/htdocs":{"guestpath":"/htdocs","hostpath":"/home/maksim/vagrant/htdocs","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/maksim/vagrant","disabled":false,"__vagrantfile":true}},"rsync":{}}
+{"virtualbox":{"/htdocs":{"guestpath":"/htdocs","hostpath":"F:/work/assoi-vagrant/htdocs","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"F:/work/assoi-vagrant","disabled":false,"__vagrantfile":true}}}
