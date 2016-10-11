@@ -29,11 +29,15 @@ ln -s /etc/nginx/sites-available/assoi_ugmk.conf /etc/nginx/sites-enabled/assoi_
 sudo service nginx restart
 
 #postgres install
-sudo apt-get install -y postgresql postgresql-contrib
-sudo service postgresql restart
+sudo apt-get install -y postgresql-9.5
+
 sudo su postgres -c "psql -c \"ALTER USER postgres WITH PASSWORD 'postgres';\""
 sudo su postgres -c "createdb -U postgres assoi;"
 sudo su postgres -c "psql -U postgres assoi < /vagrant/assoi.dump;"
+sudo echo "host all all ::0/0 md5" >> /etc/postgresql/9.5/main/pg_hba.conf
+sudo echo "host all all 0.0.0.0/0 md5" >> /etc/postgresql/9.5/main/pg_hba.conf
+sudo echo "listen_addresses = '*'" >> /etc/postgresql/9.5/main/postgresql.conf
+sudo service postgresql restart
 
 #mongo install
 sudo apt-get install -y mongodb-org
@@ -46,6 +50,7 @@ make
 make install
 cd utils
 ./install_server.sh
+sudo service redis_6379 stop
 cd ~
 
 #rabbitmq install
@@ -57,7 +62,7 @@ rabbitmqctl delete_user guest
 rabbitmqctl add_user jet jetparole12j
 rabbitmqctl set_permissions jet ".*" ".*" ".*"
 rabbitmqctl set_user_tags jet administrator
-
+sudo service rabbitmq-server stop
 
 #other modules
 curl -sL https://deb.nodesource.com/setup_6.x | bash -s
@@ -77,9 +82,14 @@ npm i -g pm2
 npm install -g gitbook-cli
 wget -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py | python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()"
 
+export NODE_ENV=vagrant_development
 
 cd /htdocs/ugmk
 sudo npm i --no-bin-links
 node install.js
+
+sudo service rabbitmq-server start
+sudo service redis_6379 start
+
 sudo pm2 start ugmk.json
 sudo pm2 save
