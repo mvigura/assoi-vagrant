@@ -82,11 +82,11 @@ npm i -g pm2
 npm install -g gitbook-cli
 wget -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py | python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()"
 
-export NODE_ENV=vagrant_development
+export NODE_ENV=development
 
 cd /htdocs/ugmk
 sudo npm i --no-bin-links
-node install.js
+node admin.js install
 
 sudo service rabbitmq-server start
 sudo service redis_6379 start
