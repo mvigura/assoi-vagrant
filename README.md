@@ -5,7 +5,7 @@
 - [Vagrant](https://www.vagrantup.com/downloads.html)
 - [VirtualBox](https://www.virtualbox.org)
 
-1. ```git clone --recursive git@github.com:mvigura/assoi-vagrant.git```
+1. ```git clone --recursive https://github.com/mvigura/assoi-vagrant.git```
 1. ```vagrant up```
 
 ## Other
