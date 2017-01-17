@@ -95,5 +95,5 @@ node admin.js compile
 node admin.js install
 
 
-su - vagrant -c "pm2 start ugmk.json"
+su - vagrant -c "cd /htdocs/ugmk && pm2 start ugmk.json"
 su - vagrant -c "pm2 save"
