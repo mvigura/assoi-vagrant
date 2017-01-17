@@ -87,11 +87,13 @@ export NODE_ENV=development
 cd /htdocs/ugmk
 cp ./config.origin ./config.js
 sudo npm i --no-bin-links
-node admin.js compile
-node admin.js install
 
 sudo service rabbitmq-server start
 sudo service redis_6379 start
+
+node admin.js compile
+node admin.js install
+
 
 su - vagrant -c "pm2 start ugmk.json"
 su - vagrant -c "pm2 save"
