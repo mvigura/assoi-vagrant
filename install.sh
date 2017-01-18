@@ -33,7 +33,7 @@ sudo apt-get install -y postgresql-9.5
 
 sudo su postgres -c "psql -c \"ALTER USER postgres WITH PASSWORD 'postgres';\""
 sudo su postgres -c "createdb -U postgres assoi;"
-sudo su postgres -c "psql -U postgres assoi < /vagrant/assoi.dump;"
+# sudo su postgres -c "psql -U postgres assoi < /vagrant/assoi.dump;"
 sudo echo "host all all ::0/0 md5" >> /etc/postgresql/9.5/main/pg_hba.conf
 sudo echo "host all all 0.0.0.0/0 md5" >> /etc/postgresql/9.5/main/pg_hba.conf
 sudo echo "listen_addresses = '*'" >> /etc/postgresql/9.5/main/postgresql.conf
@@ -50,7 +50,7 @@ make
 make install
 cd utils
 ./install_server.sh
-sudo service redis_6379 stop
+# sudo service redis_6379 stop
 cd ~
 
 #rabbitmq install
@@ -62,7 +62,7 @@ rabbitmqctl delete_user guest
 rabbitmqctl add_user jet jetparole12j
 rabbitmqctl set_permissions jet ".*" ".*" ".*"
 rabbitmqctl set_user_tags jet administrator
-sudo service rabbitmq-server stop
+# sudo service rabbitmq-server stop
 
 #other modules
 curl -sL https://deb.nodesource.com/setup_6.x | bash -s
@@ -88,12 +88,12 @@ cd /htdocs/ugmk
 cp ./config.origin ./config.js
 sudo npm i --no-bin-links
 
-sudo service rabbitmq-server start
-sudo service redis_6379 start
+# sudo service rabbitmq-server start
+# sudo service redis_6379 start
 
-node admin.js compile
-node admin.js install
+# node admin.js compile
+# node admin.js install
 
 
-su - vagrant -c "cd /htdocs/ugmk && pm2 start ugmk.json"
-su - vagrant -c "pm2 save"
+# su - vagrant -c "cd /htdocs/ugmk && pm2 start ugmk.json"
+# su - vagrant -c "pm2 save"
