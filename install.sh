@@ -33,7 +33,7 @@ sudo apt-get install -y postgresql-9.5
 
 sudo su postgres -c "psql -c \"ALTER USER postgres WITH PASSWORD 'postgres';\""
 sudo su postgres -c "createdb -U postgres assoi;"
-# sudo su postgres -c "psql -U postgres assoi < /vagrant/assoi.dump;"
+sudo su postgres -c "psql -U postgres assoi < /vagrant/assoi.dump;"
 sudo echo "host all all ::0/0 md5" >> /etc/postgresql/9.5/main/pg_hba.conf
 sudo echo "host all all 0.0.0.0/0 md5" >> /etc/postgresql/9.5/main/pg_hba.conf
 sudo echo "listen_addresses = '*'" >> /etc/postgresql/9.5/main/postgresql.conf
